@@ -1,1 +1,1 @@
-# springboot-oidc-sample
+# Spring Boot OpenID Connect Sample
