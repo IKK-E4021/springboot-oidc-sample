@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: oidc-idp
+  security:
+    oauth2:
+      resourceserver:
+        opaque-token:
+          issuer-uri: http://localhost:8080/auth/realms/demo
+      client:
+        provider:
+          demo:
+            issuer-uri: http://localhost:8080/auth/realms/demo
+        registration:
+          demo:
+            provider: demo
+            client-id: spring-client
+            client-secret: changeme
+            scope: openid, profile, email
+            authorization-grant-type: authorization_code
+            redirect-uri: http://127.0.0.1:8080/login/oauth2/code/demo
