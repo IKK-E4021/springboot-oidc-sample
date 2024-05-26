@@ -1,6 +1,11 @@
 spring:
   application:
     name: oidc-idp
+  datasource:
+    url: jdbc:mysql://localhost:3306/oidc_idp?useSSL=false
+    username: user
+    password: password
+    driver-class-name: com.mysql.cj.jdbc.Driver
   security:
     oauth2:
       resourceserver:

@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  mysql:
+    container_name: oidc_idp_db
+    image: mysql:8.4.0
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./mysql/data:/var/lib/mysql
+      - ./mysql/init:/docker-entrypoint-initdb.d
+
+volumes:
+  mysql-data:
