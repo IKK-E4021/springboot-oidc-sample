@@ -1,4 +1,4 @@
-CREATE TABLE oauth2_clients (
+CREATE TABLE oauth2_client (
     id             INT UNSIGNED  AUTO_INCREMENT,
     client_id      VARCHAR(256)  NOT NULL,
     client_secret  VARCHAR(512),
@@ -11,15 +11,15 @@ CREATE TABLE oauth2_clients (
     UNIQUE KEY (client_id)
 );
 
-CREATE TABLE oauth2_client_redirect_uris (
-    id                BIGINT UNSIGNED AUTO_INCREMENT,
+CREATE TABLE oauth2_client_redirect_uri (
+    id                INT    UNSIGNED AUTO_INCREMENT,
     oauth2_client_id  INT    UNSIGNED NOT NULL,
     redirect_uri      VARCHAR(256),
     created_at        DATETIME        NOT NULL,
     updated_at        DATETIME        NOT NULL,
     PRIMARY KEY (id),
     UNIQUE KEY (oauth2_client_id, redirect_uri),
-    FOREIGN KEY (oauth2_client_id) REFERENCES oauth2_clients (id)
+    FOREIGN KEY (oauth2_client_id) REFERENCES oauth2_client (id)
 );
 
 --CREATE TABLE oauth2_client_scopes (
