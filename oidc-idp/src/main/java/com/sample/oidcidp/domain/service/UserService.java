@@ -1,5 +1,7 @@
-package com.sample.oidcidp.domain;
+package com.sample.oidcidp.domain.service;
 
+import com.sample.oidcidp.domain.entity.Oauth2Client;
+import com.sample.oidcidp.domain.repository.Oauth2ClientRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -7,7 +9,7 @@ import java.util.List;
 
 @Service
 @AllArgsConstructor
-public class Oauth2ClientService {
+public class UserService {
 
     private final Oauth2ClientRepository oauth2ClientRepository;
 
@@ -19,8 +21,6 @@ public class Oauth2ClientService {
     public void findAll() {
         List<Oauth2Client> oauth2Clients = oauth2ClientRepository.findAllWithRedirectUri();
         System.out.println(oauth2Clients);
-        System.out.println(oauth2Clients.get(0).getRedirectUris());
-        System.out.println(oauth2Clients.get(1).getRedirectUris());
     }
 
 

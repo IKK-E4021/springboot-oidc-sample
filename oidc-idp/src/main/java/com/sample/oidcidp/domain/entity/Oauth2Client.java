@@ -1,4 +1,4 @@
-package com.sample.oidcidp.domain;
+package com.sample.oidcidp.domain.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;

@@ -1,5 +1,6 @@
-package com.sample.oidcidp.domain;
+package com.sample.oidcidp.domain.repository;
 
+import com.sample.oidcidp.domain.entity.Oauth2Client;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
@@ -12,6 +13,6 @@ public interface Oauth2ClientRepository extends JpaRepository<Oauth2Client, Long
 
     Optional<Oauth2Client> findById(long id);
 
-    @Query("SELECT DISTINCT client FROM Oauth2Client client LEFT JOIN FETCH client.redirectUris")
+    @Query("SELECT u FROM User u JOIN FETCH u.userEmail ue WHERE ue.userEmail = :userEmail")
     List<Oauth2Client> findAllWithRedirectUri();
 }
