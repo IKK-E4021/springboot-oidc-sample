@@ -13,6 +13,6 @@ public interface Oauth2ClientRepository extends JpaRepository<Oauth2Client, Long
 
     Optional<Oauth2Client> findById(long id);
 
-    @Query("SELECT u FROM User u JOIN FETCH u.userEmail ue WHERE ue.userEmail = :userEmail")
+    @Query("SELECT DISTINCT client FROM Oauth2Client client LEFT JOIN FETCH client.redirectUris")
     List<Oauth2Client> findAllWithRedirectUri();
 }
