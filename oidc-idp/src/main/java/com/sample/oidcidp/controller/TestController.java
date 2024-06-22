@@ -20,6 +20,7 @@ public class TestController {
 
     @GetMapping("/test")
     public String getTestPage() {
+        System.out.println("test");
         oauth2ClientService.findById();
         oauth2ClientService.findAll();
         return "test";

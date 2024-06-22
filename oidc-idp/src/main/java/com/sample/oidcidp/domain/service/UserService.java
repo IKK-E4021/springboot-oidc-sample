@@ -1,8 +1,9 @@
 package com.sample.oidcidp.domain.service;
 
-import com.sample.oidcidp.domain.entity.Oauth2Client;
-import com.sample.oidcidp.domain.repository.Oauth2ClientRepository;
+import com.sample.oidcidp.domain.entity.User;
+import com.sample.oidcidp.domain.repository.UserRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -11,17 +12,20 @@ import java.util.List;
 @AllArgsConstructor
 public class UserService {
 
-    private final Oauth2ClientRepository oauth2ClientRepository;
+    private final UserRepository userRepository;
 
-    public void findById() {
-        var oauth2Client = oauth2ClientRepository.findById(1).orElseThrow(RuntimeException::new);
-        System.out.println(oauth2Client);
+    public User findById(long id) {
+        return userRepository.findUserWithRelationshipsById(id)
+                .orElseThrow(() -> new UsernameNotFoundException("user not found."));
     }
 
-    public void findAll() {
-        List<Oauth2Client> oauth2Clients = oauth2ClientRepository.findAllWithRedirectUri();
-        System.out.println(oauth2Clients);
+    public User findByEmail(String email) {
+        return userRepository.findUserWithRelationshipsByEmail(email)
+                .orElseThrow(() -> new UsernameNotFoundException("user not found."));
     }
 
+    public List<User> findAll() {
+        return userRepository.findAllWithRelationships();
+    }
 
 }

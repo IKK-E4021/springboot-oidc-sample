@@ -10,6 +10,7 @@ CREATE TABLE user (
 );
 
 CREATE TABLE user_credential (
+    id                BIGINT          UNSIGNED AUTO_INCREMENT,
     user_id           BIGINT          UNSIGNED NOT NULL,
     password          VARCHAR(4000)            NOT NULL,
     salt              TINYBLOB                 NOT NULL,
@@ -17,17 +18,17 @@ CREATE TABLE user_credential (
     last_changed_at   DATETIME                 NOT NULL,
     created_at        DATETIME                 NOT NULL,
     updated_at        DATETIME                 NOT NULL,
-    PRIMARY KEY (user_id),
+    PRIMARY KEY (id),
     FOREIGN KEY (user_id) REFERENCES user (id)
 );
 
 CREATE TABLE user_email (
     id                BIGINT          UNSIGNED AUTO_INCREMENT,
     user_id           BIGINT          UNSIGNED                 NOT NULL,
-    user_email        VARCHAR(255)                             NOT NULL,
+    email             VARCHAR(255)                             NOT NULL,
     created_at        DATETIME                                 NOT NULL,
     updated_at        DATETIME                                 NOT NULL,
     PRIMARY KEY (id),
-    UNIQUE KEY (user_email),
+    UNIQUE KEY (email),
     FOREIGN KEY (user_id) REFERENCES user (id)
 );

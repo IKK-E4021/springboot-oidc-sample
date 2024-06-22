@@ -16,13 +16,16 @@ public class Oauth2ClientService {
     private final Oauth2ClientRepository oauth2ClientRepository;
 
     public void findById() {
-        var oauth2Client = oauth2ClientRepository.findById(1).orElseThrow(RuntimeException::new);
+        var oauth2Client = oauth2ClientRepository.findOauth2ClientWithRelationshipsByClientId("test_client").orElseThrow(RuntimeException::new);
+        System.out.println("oauth2Client clientId = test_client");
         System.out.println(oauth2Client);
+        System.out.println(oauth2Client.getRedirectUris());
     }
 
     public void findAll() {
         List<Oauth2Client> oauth2Clients = oauth2ClientRepository.findAllWithRedirectUri();
-        System.out.println(oauth2Clients);
+        System.out.println("all oauth2Clients");
+        oauth2Clients.forEach(System.out::println);
     }
 
 
