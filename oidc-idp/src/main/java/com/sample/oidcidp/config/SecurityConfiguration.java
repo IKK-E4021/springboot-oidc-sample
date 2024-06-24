@@ -6,6 +6,7 @@ import com.nimbusds.jose.jwk.source.ImmutableJWKSet;
 import com.nimbusds.jose.jwk.source.JWKSource;
 import com.nimbusds.jose.proc.SecurityContext;
 import com.sample.oidcidp.domain.service.CustomUserDetailsService;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -44,13 +45,10 @@ import java.util.UUID;
  */
 @Configuration
 @EnableWebSecurity
+@AllArgsConstructor
 public class SecurityConfiguration {
 
-    private final UserDetailsService customUserDetailsService;
-
-    public SecurityConfiguration(CustomUserDetailsService customUserDetailsService) {
-        this.customUserDetailsService = customUserDetailsService;
-    }
+    private final CustomUserDetailsService customUserDetailsService;
 
     @Bean
     @Order(1)
