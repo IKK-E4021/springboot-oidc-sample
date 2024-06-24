@@ -1,6 +1,6 @@
 package com.sample.oidcidp.domain.service;
 
-import com.sample.oidcidp.CustomUserDetails;
+import com.sample.oidcidp.PasswordClearingCustomUserDetails;
 import com.sample.oidcidp.domain.entity.User;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
@@ -19,7 +19,6 @@ public class CustomUserDetailsService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         User user = userService.findByEmail(email);
-        user.getUserCredential().setPassword("{noop}" + user.getUserCredential().getPassword());
-        return new CustomUserDetails(user);
+        return new PasswordClearingCustomUserDetails(user.getUuid(), user.getUserCredential().getPassword());
     }
 }

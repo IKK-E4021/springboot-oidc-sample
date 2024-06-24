@@ -13,7 +13,6 @@ CREATE TABLE user_credential (
     id                BIGINT          UNSIGNED AUTO_INCREMENT,
     user_id           BIGINT          UNSIGNED NOT NULL,
     password          VARCHAR(4000)            NOT NULL,
-    salt              TINYBLOB                 NOT NULL,
     failure_count     INT             UNSIGNED NOT NULL,
     last_changed_at   DATETIME                 NOT NULL,
     created_at        DATETIME                 NOT NULL,

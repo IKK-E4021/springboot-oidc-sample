@@ -22,9 +22,6 @@ public class UserCredential {
     @ToString.Include
     private String password;
 
-    @ToString.Include
-    private byte[] salt;
-
     @Column(name="failure_count")
     @ToString.Include
     private int failureCount;
