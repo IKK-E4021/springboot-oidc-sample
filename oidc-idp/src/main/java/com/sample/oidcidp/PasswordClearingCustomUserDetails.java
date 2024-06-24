@@ -8,6 +8,5 @@ public class PasswordClearingCustomUserDetails extends CustomUserDetails {
 
     public void clearPassword() {
         this.password = null;
-        // SecurityContextの更新処理
     }
 }
