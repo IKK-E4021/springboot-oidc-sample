@@ -46,7 +46,7 @@ import java.util.UUID;
 @Configuration
 @EnableWebSecurity
 @AllArgsConstructor
-public class SecurityConfiguration {
+public class SecurityConfig {
 
     private final CustomUserDetailsService customUserDetailsService;
 
