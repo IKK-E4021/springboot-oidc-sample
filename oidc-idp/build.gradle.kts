@@ -31,6 +31,10 @@ dependencies {
 	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
 
+dependencyLocking {
+	lockAllConfigurations()
+}
+
 tasks.withType<Test> {
 	useJUnitPlatform()
 }

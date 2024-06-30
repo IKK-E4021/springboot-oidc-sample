@@ -19,6 +19,11 @@ public class UserService {
                 .orElseThrow(() -> new UsernameNotFoundException("user not found."));
     }
 
+    public User findByUuid(String uuid) {
+        return userRepository.findUserWithRelationshipsByUuid(uuid)
+                .orElseThrow(() -> new UsernameNotFoundException("user not found."));
+    }
+
     public User findByEmail(String email) {
         return userRepository.findUserWithRelationshipsByEmail(email)
                 .orElseThrow(() -> new UsernameNotFoundException("user not found."));
